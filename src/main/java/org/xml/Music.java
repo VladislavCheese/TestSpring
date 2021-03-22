@@ -1,4 +1,4 @@
-package org.test.spring.my;
+package org.xml;
 
 public interface Music {
     String getSong();

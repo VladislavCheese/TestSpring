@@ -1,6 +1,5 @@
-package org.test.spring.my;
+package org.xml;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +8,24 @@ public class MusicPlayer {
 
     private String name;
     private int volume;
+
+    public void doMyInit(){
+        System.out.println("Initialization");
+    }
+
+    public void doMyDestroy(){
+        System.out.println("Destruction");
+    }
+    // IoC
+    private MusicPlayer(List<Music> music) {
+        this.musicList = music;
+    }
+
+    private MusicPlayer() {}
+
+    public static MusicPlayer factory(List<Music> music) {
+        return new MusicPlayer(music);
+    }
 
     public String getName() {
         return name;
@@ -25,13 +42,6 @@ public class MusicPlayer {
     public void setVolume(int volume) {
         this.volume = volume;
     }
-
-    // IoC
-    public MusicPlayer(List<Music> music) {
-        this.musicList = music;
-    }
-
-    public MusicPlayer() {}
 
     public List<Music> getMusicList() {
         return musicList;
